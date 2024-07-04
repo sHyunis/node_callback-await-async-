@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const url = `https://yts.mx/api/v2/list_movies.json`;
+
+        let movies = [];
+        function loadData(url){
+            fetch(url)
+            .then(res=>res.json)
+            .then(res=>{
+                console.log(res)
+                movies = datas;
+            }).catch(err=>{ // error 처리
+                console.log(err)
+            })
+        }
+
+        async function loadData(url){
+            try{
+                const res = await fetch(url); // 데이터를 읽어와서 promise 데이터로 갖고 왔다.
+                const datas = await res.json(); //json 데이터로 바꾼다.
+                console.log(datas);
+
+                movies = datas;
+            }catch(err){ // error 처리
+                console.log(err);
+            }
+
+            
+        }
+
+        loadData(url);
+    </script>
+</body>
+</html>
